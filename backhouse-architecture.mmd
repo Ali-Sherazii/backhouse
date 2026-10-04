@@ -1,48 +1,30 @@
-flowchart LR
-    subgraph Intake
-        U[Reviewer browser<br/>upload / try a sample]
-        M[Supplier email<br/>Mailpit or IMAP inbox]
+flowchart TB
+    subgraph IN["Invoices come in"]
+        direction LR
+        WEB["Web app<br/>upload, phone photo, samples"]
+        MAIL["Supplier email<br/>invoices@ address"]
     end
 
-    subgraph Edge
-        C[Caddy<br/>HTTPS + routing]
+    WEB --> CADDY["Caddy (HTTPS)"] --> API["FastAPI<br/>auth, REST, webhooks"]
+    MAIL --> MP["Mailpit SMTP inbox"] --> N8NI["n8n intake workflow"] -->|"attachment + shared secret"| API
+
+    API --> PG[("Postgres")]
+    API --> S3[("MinIO<br/>originals, page images")]
+    API -->|"Celery job"| RQ[("Redis queue")]
+
+    subgraph WK["Worker pipeline"]
+        T["Text and positions<br/>PyMuPDF, Docling OCR"] --> G["Injection guard<br/>hidden text, layer vs OCR,<br/>Prompt Guard 2, keywords"]
+        G -->|"sanitised, spotlighted text"| X["Extract<br/>Qwen2.5 on Ollama, JSON schema"]
+        X --> GR["Ground<br/>find each value on the page"]
+        GR --> V["Validate<br/>totals, dates, vendor,<br/>duplicates, price changes"]
+        V --> D{"Decide"}
     end
 
-    U --> C
-    C -->|/| FE[Next.js frontend<br/>dashboard + review screen]
-    C -->|/api| API[FastAPI api<br/>JWT auth, REST]
-    FE -->|/api| API
-
-    M --> N1[n8n intake workflow<br/>poll inbox, split attachments]
-    N1 -->|POST /webhooks/intake<br/>shared secret| API
-
-    API -->|original file| S3[(MinIO<br/>invoices bucket)]
-    API -->|rows| PG[(Postgres<br/>backhouse db)]
-    API -->|enqueue process_document| R[(Redis<br/>Celery broker)]
-
-    R --> W
-
-    subgraph W[Celery worker: process_document]
-        direction TB
-        T1[1. Load + sha256] --> T2[2. Text<br/>PyMuPDF text layer<br/>or Docling / PaddleOCR]
-        T2 --> T3[3. Injection guard<br/>hidden text, layer vs OCR diff,<br/>Prompt Guard 2, keywords]
-        T3 -->|sanitised, spotlighted text| T4[4. Extract<br/>Ollama qwen2.5 + JSON schema]
-        T4 --> T5[5. Validate<br/>sums, dates, vendor,<br/>duplicates, price change]
-        T5 --> T6{6. Decide}
-        T6 -->|clean + confident| T7[7. Approve<br/>price history]
-        T6 -->|anything uncertain| RV[needs_review]
-    end
-
-    T4 <--> OL[Ollama<br/>or OpenAI-compatible endpoint]
-    T4 -.trace.-> LF[Langfuse web + worker<br/>ClickHouse, Redis, MinIO]
-    W --> PG
-    W --> S3
-
-    RV --> FE
-    FE -->|approve with corrections| API
-    API --> T7
-
-    T7 -->|POST webhook| N2[n8n export workflow]
-    N2 -->|JSON-RPC: partner + account.move in_invoice| OD[Odoo 17<br/>Invoicing]
-    N2 -->|POST /webhooks/exported| API
-    N2 -->|price change or flagged| AL[Slack or email alert]
+    RQ --> T
+    X -. "trace" .-> LF["Langfuse tracing"]
+    D -->|"clean and confident"| OK["Approved"]
+    D -->|"anything uncertain"| RV["Review screen<br/>a person checks and approves"]
+    RV --> OK
+    OK --> N8NE["n8n export workflow"] -->|"JSON-RPC"| ODOO["Odoo 17 vendor bill"]
+    N8NE -->|"bill id"| API
+    N8NE --> AL["Slack or email alert<br/>price change, flagged invoice"]
