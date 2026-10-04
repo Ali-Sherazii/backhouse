@@ -1,0 +1,4 @@
+# worker extras: OCR, Prompt Guard classifier, tracing. torch (CPU) is installed first in the Dockerfile.
+transformers>=4.45,<5
+docling>=2.15,<3
+langfuse>=3.0,<4
