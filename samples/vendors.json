@@ -1,0 +1,56 @@
+[
+  {
+    "key": "green_valley",
+    "name": "Green Valley Produce Ltd",
+    "tax_id": "47-2918365",
+    "aliases": [
+      "Green Valley Produce",
+      "Green Valley"
+    ]
+  },
+  {
+    "key": "harbor_fresh",
+    "name": "Harbor Fresh Seafood Co.",
+    "tax_id": "93-4417260",
+    "aliases": [
+      "Harbor Fresh Seafood",
+      "Harbor Fresh"
+    ]
+  },
+  {
+    "key": "bluebell",
+    "name": "Bluebell Dairy Co.",
+    "tax_id": "36-8820147",
+    "aliases": [
+      "Bluebell Dairy",
+      "Bluebell"
+    ]
+  },
+  {
+    "key": "stone_mill",
+    "name": "Stone Mill Bakery",
+    "tax_id": "82-1937754",
+    "aliases": [
+      "Stone Mill Bakery LLC",
+      "Stone Mill"
+    ]
+  },
+  {
+    "key": "copper_kettle",
+    "name": "Copper Kettle Beverages",
+    "tax_id": "27-6650381",
+    "aliases": [
+      "Copper Kettle Beverage Co.",
+      "Copper Kettle"
+    ]
+  },
+  {
+    "key": "prime_cut",
+    "name": "Prime Cut Meats Inc.",
+    "tax_id": "58-3302916",
+    "aliases": [
+      "Prime Cut Meats",
+      "Prime Cut"
+    ]
+  }
+]
