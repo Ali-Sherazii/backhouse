@@ -1,0 +1,545 @@
+{
+  "id": "bhExportOdoo0001",
+  "name": "Backhouse: export approved invoice to Odoo",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "backhouse-export",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "ca7c57d8-c790-51a2-950c-2be37802161c",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        300
+      ],
+      "webhookId": "5099b6b2-fedb-54be-8422-39e2ab11647e"
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "f53e6b3c-40a8-5769-a246-d517897d74a0",
+              "leftValue": "={{ $json.headers['x-backhouse-secret'] }}",
+              "rightValue": "={{ $env.WEBHOOK_SECRET }}",
+              "operator": {
+                "type": "string",
+                "operation": "equals"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "013143e3-bb89-5e93-96d5-003d68343ea4",
+      "name": "Secret OK?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.ODOO_URL }}/jsonrpc",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ jsonrpc: '2.0', method: 'call', params: { service: 'common', method: 'login', args: [$env.ODOO_DB, $env.ODOO_LOGIN, $env.ODOO_PASSWORD] } }) }}",
+        "options": {}
+      },
+      "id": "d6cde41f-9e8f-5e0d-af8a-df07ada36438",
+      "name": "Odoo login",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        440,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.ODOO_URL }}/jsonrpc",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ jsonrpc: '2.0', method: 'call', params: { service: 'object', method: 'execute_kw', args: [$env.ODOO_DB, $('Odoo login').first().json.result, $env.ODOO_PASSWORD, 'res.partner', 'search_read', [$('Webhook').first().json.body.vendor.odoo_partner_id ? [['id', '=', $('Webhook').first().json.body.vendor.odoo_partner_id]] : [['name', '=ilike', $('Webhook').first().json.body.vendor.name], ['is_company', '=', true]]], { fields: ['id', 'name'], limit: 1 }] } }) }}",
+        "options": {}
+      },
+      "id": "f26371c7-c10b-5cb2-947f-c0efc873d75c",
+      "name": "Find partner",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        660,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "ab0d308f-ec93-5b8d-87f8-b64459622d86",
+              "leftValue": "={{ ($json.result || []).length > 0 }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "0d38f913-836d-5459-bce7-9a1f2e4471e9",
+      "name": "Partner exists?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        880,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "return [{ json: { partner_id: $input.first().json.result[0].id } }];"
+      },
+      "id": "f319f535-9d1a-506e-ac4d-bea9471530a9",
+      "name": "Use existing partner",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1100,
+        180
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.ODOO_URL }}/jsonrpc",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ jsonrpc: '2.0', method: 'call', params: { service: 'object', method: 'execute_kw', args: [$env.ODOO_DB, $('Odoo login').first().json.result, $env.ODOO_PASSWORD, 'res.partner', 'create', [{ name: $('Webhook').first().json.body.vendor.name, is_company: true, supplier_rank: 1, vat: $('Webhook').first().json.body.vendor.tax_id || false }], {}] } }) }}",
+        "options": {}
+      },
+      "id": "361c59b5-a051-5a2c-80b0-c9616db771be",
+      "name": "Create partner",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1100,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const r = $input.first().json;\nif (r.error) throw new Error('Odoo: ' + JSON.stringify(r.error.data?.message || r.error.message));\nreturn [{ json: { partner_id: r.result } }];"
+      },
+      "id": "7f069c20-c6c8-58a7-b790-3b18ba8ca8be",
+      "name": "Use new partner",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        380
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const p = $('Webhook').first().json.body;\nconst inv = p.invoice;\nconst lines = (inv.lines || []).map(l => [0, 0, {\n  name: l.description || 'Item',\n  quantity: l.quantity ?? 1,\n  price_unit: l.unit_price ?? l.amount ?? 0,\n  tax_ids: [[6, 0, []]],\n}]);\nif (inv.discount) {\n  lines.push([0, 0, { name: 'Discount (as invoiced)', quantity: 1, price_unit: -Math.abs(inv.discount), tax_ids: [[6, 0, []]] }]);\n}\nif (inv.tax) {\n  lines.push([0, 0, { name: 'Sales tax (as invoiced)', quantity: 1, price_unit: inv.tax, tax_ids: [[6, 0, []]] }]);\n}\nconst vals = {\n  move_type: 'in_invoice',\n  partner_id: $json.partner_id,\n  ref: inv.number,\n  invoice_date: inv.date,\n  narration: `Imported by Backhouse from document #${p.document_id}: ${p.document_url}`,\n  invoice_line_ids: lines,\n};\nif (inv.due_date) vals.invoice_date_due = inv.due_date;\nreturn [{ json: { partner_id: $json.partner_id, vals } }];"
+      },
+      "id": "8000a29d-0943-5707-89da-67ea1a26f2e0",
+      "name": "Build bill",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1540,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.ODOO_URL }}/jsonrpc",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ jsonrpc: '2.0', method: 'call', params: { service: 'object', method: 'execute_kw', args: [$env.ODOO_DB, $('Odoo login').first().json.result, $env.ODOO_PASSWORD, 'account.move', 'create', [$json.vals], {}] } }) }}",
+        "options": {}
+      },
+      "id": "35d668e2-0144-5cda-8d14-f7c8a8049b18",
+      "name": "Create bill",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1760,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const r = $input.first().json;\nif (r.error) throw new Error('Odoo: ' + JSON.stringify(r.error.data?.message || r.error.message));\nreturn [{ json: { odoo_bill_id: r.result, odoo_partner_id: $('Build bill').first().json.partner_id } }];"
+      },
+      "id": "61154589-8ba2-5d70-be7e-d62338642de1",
+      "name": "Check Odoo result",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1980,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.BACKHOUSE_API_URL }}/webhooks/exported",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ document_id: $('Webhook').first().json.body.document_id, odoo_bill_id: $json.odoo_bill_id, odoo_partner_id: $json.odoo_partner_id }) }}",
+        "options": {},
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Backhouse-Secret",
+              "value": "={{ $env.WEBHOOK_SECRET }}"
+            }
+          ]
+        }
+      },
+      "id": "e22fac93-dd9f-5c56-8fdb-5524294e0427",
+      "name": "Report to Backhouse",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        2200,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "81ce81d9-10b6-5fa9-9a0c-65e8d0373ff1",
+              "leftValue": "={{ $('Webhook').first().json.body.alert }}",
+              "rightValue": "",
+              "operator": {
+                "type": "boolean",
+                "operation": "true",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "8e955b30-7409-5e8a-820f-1a4752d7e10a",
+      "name": "Alert needed?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2420,
+        280
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const p = $('Webhook').first().json.body;\nconst bill = $('Check Odoo result').first().json.odoo_bill_id;\nconst head = `Invoice ${p.invoice.number} from ${p.vendor.name} (${p.invoice.currency || ''} ${p.invoice.total}) was approved by ${p.approved_by} and sent to Odoo as bill #${bill}.`;\nconst lines = [head, ''];\nif (p.guard_flagged) lines.push('- The injection guard flagged this document before it was approved. Check it was intended.');\nfor (const w of p.warnings || []) lines.push(`- ${w.check === 'price_change' ? 'Price change' : w.check}: ${w.detail}`);\nlines.push('', `Open in Backhouse: ${p.document_url}`);\nconst subject = p.guard_flagged\n  ? `[Backhouse] Flagged invoice approved: ${p.vendor.name} ${p.invoice.number}`\n  : `[Backhouse] Price change: ${p.vendor.name} ${p.invoice.number}`;\nreturn [{ json: { subject, text: lines.join('\\n') } }];"
+      },
+      "id": "48a81e3a-b245-5033-87da-1af8091b4c6c",
+      "name": "Compose alert",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        2640,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "loose"
+          },
+          "conditions": [
+            {
+              "id": "853cf983-ac53-5a36-b66d-be8caa627967",
+              "leftValue": "={{ $env.SLACK_WEBHOOK_URL }}",
+              "rightValue": "",
+              "operator": {
+                "type": "string",
+                "operation": "notEmpty",
+                "singleValue": true
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      },
+      "id": "59109629-b107-5f56-abd0-926c4dd19afb",
+      "name": "Slack configured?",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [
+        2860,
+        200
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.SLACK_WEBHOOK_URL }}",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ text: '*' + $json.subject + '*\\n' + $json.text }) }}",
+        "options": {}
+      },
+      "id": "b9769543-7ea1-5931-af54-3a2c53b94ef1",
+      "name": "Slack alert",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3080,
+        100
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.MAILPIT_URL }}/api/v1/send",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ From: { Email: 'alerts@demo.backhouse', Name: 'Backhouse' }, To: [{ Email: $env.ALERT_EMAIL_TO }], Subject: $json.subject, Text: $json.text }) }}",
+        "options": {}
+      },
+      "id": "585dac7e-a323-5c2e-a914-6c7760d8c0c6",
+      "name": "Email alert (Mailpit)",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        3080,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Secret OK?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Secret OK?": {
+      "main": [
+        [
+          {
+            "node": "Odoo login",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Odoo login": {
+      "main": [
+        [
+          {
+            "node": "Find partner",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Find partner": {
+      "main": [
+        [
+          {
+            "node": "Partner exists?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Partner exists?": {
+      "main": [
+        [
+          {
+            "node": "Use existing partner",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Create partner",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Use existing partner": {
+      "main": [
+        [
+          {
+            "node": "Build bill",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create partner": {
+      "main": [
+        [
+          {
+            "node": "Use new partner",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Use new partner": {
+      "main": [
+        [
+          {
+            "node": "Build bill",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build bill": {
+      "main": [
+        [
+          {
+            "node": "Create bill",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Create bill": {
+      "main": [
+        [
+          {
+            "node": "Check Odoo result",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Check Odoo result": {
+      "main": [
+        [
+          {
+            "node": "Report to Backhouse",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Report to Backhouse": {
+      "main": [
+        [
+          {
+            "node": "Alert needed?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Alert needed?": {
+      "main": [
+        [
+          {
+            "node": "Compose alert",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        []
+      ]
+    },
+    "Compose alert": {
+      "main": [
+        [
+          {
+            "node": "Slack configured?",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Slack configured?": {
+      "main": [
+        [
+          {
+            "node": "Slack alert",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Email alert (Mailpit)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true
+  },
+  "pinData": {},
+  "tags": [],
+  "versionId": "7e29c0a0-9b6e-5830-9961-997538dc627b"
+}

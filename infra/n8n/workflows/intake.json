@@ -1,0 +1,271 @@
+{
+  "id": "bhIntakeMailpit1",
+  "name": "Backhouse: email intake (Mailpit)",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "seconds",
+              "secondsInterval": 20
+            }
+          ]
+        }
+      },
+      "id": "f8e76011-cfa9-55b5-8423-1a481b07a42b",
+      "name": "Every 20 seconds",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        0,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $env.MAILPIT_URL }}/api/v1/search?query=is%3Aunread&limit=25",
+        "options": {}
+      },
+      "id": "a15a235f-17e2-5952-822a-eec6cbdffa07",
+      "name": "Unread mail",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const msgs = $input.first().json.messages || [];\nreturn msgs.map(m => ({ json: { id: m.ID, from: m.From?.Address || '', subject: m.Subject || '' } }));"
+      },
+      "id": "97162067-3ff2-5c06-9726-c8e4c07f5e1e",
+      "name": "One item per message",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        440,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "PUT",
+        "url": "={{ $env.MAILPIT_URL }}/api/v1/messages",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ IDs: [$json.id], Read: true }) }}",
+        "options": {}
+      },
+      "id": "87c3715a-f040-5bf3-a307-7ad643e8a0ea",
+      "name": "Mark read",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        660,
+        460
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $env.MAILPIT_URL }}/api/v1/message/{{ $json.id }}",
+        "options": {}
+      },
+      "id": "34c0742d-ad66-5402-bcf8-298bcf9a6a98",
+      "name": "Message detail",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        660,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  const m = item.json;\n  for (const a of m.Attachments || []) {\n    const name = a.FileName || '';\n    const type = a.ContentType || '';\n    if (/\\.(pdf|png|jpe?g|webp|tiff?)$/i.test(name) || /^(application\\/pdf|image\\/)/.test(type)) {\n      out.push({ json: { message_id: m.ID, part_id: a.PartID, filename: name, content_type: type,\n        from: m.From?.Address || '', subject: m.Subject || '' } });\n    }\n  }\n}\nreturn out;"
+      },
+      "id": "f1c7dab6-d2ac-590d-8fdb-5fc48491237b",
+      "name": "One item per attachment",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        880,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "GET",
+        "url": "={{ $env.MAILPIT_URL }}/api/v1/message/{{ $json.message_id }}/part/{{ $json.part_id }}",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "file",
+              "outputPropertyName": "data"
+            }
+          }
+        }
+      },
+      "id": "f01d2312-d020-5f4a-be7d-3ee237169824",
+      "name": "Download attachment",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1100,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "jsCode": "const meta = $('One item per attachment').item.json;\nconst item = $input.item;\nitem.binary.data.fileName = meta.filename;\nif (meta.content_type) item.binary.data.mimeType = meta.content_type;\nitem.json = meta;\nreturn item;",
+        "mode": "runOnceForEachItem"
+      },
+      "id": "3f0975c9-e0af-5f0e-9357-106d0081f2c9",
+      "name": "Set file name",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        1320,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.BACKHOUSE_API_URL }}/webhooks/intake",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Backhouse-Secret",
+              "value": "={{ $env.WEBHOOK_SECRET }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "data"
+            },
+            {
+              "name": "sender",
+              "value": "={{ $json.from }}"
+            },
+            {
+              "name": "subject",
+              "value": "={{ $json.subject }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "145d6e27-10a9-5cd1-94a6-e23ec0628fbd",
+      "name": "Send to Backhouse",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        1540,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Every 20 seconds": {
+      "main": [
+        [
+          {
+            "node": "Unread mail",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Unread mail": {
+      "main": [
+        [
+          {
+            "node": "One item per message",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "One item per message": {
+      "main": [
+        [
+          {
+            "node": "Message detail",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Mark read",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Message detail": {
+      "main": [
+        [
+          {
+            "node": "One item per attachment",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "One item per attachment": {
+      "main": [
+        [
+          {
+            "node": "Download attachment",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Download attachment": {
+      "main": [
+        [
+          {
+            "node": "Set file name",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set file name": {
+      "main": [
+        [
+          {
+            "node": "Send to Backhouse",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true
+  },
+  "pinData": {},
+  "tags": [],
+  "versionId": "b3d891f3-7727-55c6-b824-23b24f3e4207"
+}

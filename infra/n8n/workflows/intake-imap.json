@@ -1,0 +1,118 @@
+{
+  "id": "bhIntakeImap0001",
+  "name": "Backhouse: email intake (IMAP inbox)",
+  "active": false,
+  "nodes": [
+    {
+      "parameters": {
+        "mailbox": "INBOX",
+        "postProcessAction": "read",
+        "downloadAttachments": true,
+        "options": {
+          "customEmailConfig": "[\"UNSEEN\"]"
+        }
+      },
+      "id": "a9a5eefa-d035-5985-931e-38ef63ebba0e",
+      "name": "Email Trigger (IMAP)",
+      "type": "n8n-nodes-base.emailReadImap",
+      "typeVersion": 2,
+      "position": [
+        0,
+        300
+      ],
+      "credentials": {
+        "imap": {
+          "id": "bhImapCredent001",
+          "name": "Backhouse IMAP"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "jsCode": "const out = [];\nfor (const item of $input.all()) {\n  for (const bin of Object.values(item.binary || {})) {\n    const name = bin.fileName || '';\n    const type = bin.mimeType || '';\n    if (/\\.(pdf|png|jpe?g|webp|tiff?)$/i.test(name) || /^(application\\/pdf|image\\/)/.test(type)) {\n      out.push({ json: { from: item.json.from || '', subject: item.json.subject || '', filename: name }, binary: { data: bin } });\n    }\n  }\n}\nreturn out;"
+      },
+      "id": "96fa7867-5a6e-5805-815b-e16fcba3aee9",
+      "name": "One item per attachment",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        220,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "={{ $env.BACKHOUSE_API_URL }}/webhooks/intake",
+        "sendHeaders": true,
+        "headerParameters": {
+          "parameters": [
+            {
+              "name": "X-Backhouse-Secret",
+              "value": "={{ $env.WEBHOOK_SECRET }}"
+            }
+          ]
+        },
+        "sendBody": true,
+        "contentType": "multipart-form-data",
+        "bodyParameters": {
+          "parameters": [
+            {
+              "parameterType": "formBinaryData",
+              "name": "file",
+              "inputDataFieldName": "data"
+            },
+            {
+              "name": "sender",
+              "value": "={{ $json.from }}"
+            },
+            {
+              "name": "subject",
+              "value": "={{ $json.subject }}"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "9792747d-a233-5eae-a7e4-75f7a3bf1060",
+      "name": "Send to Backhouse",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        440,
+        300
+      ]
+    }
+  ],
+  "connections": {
+    "Email Trigger (IMAP)": {
+      "main": [
+        [
+          {
+            "node": "One item per attachment",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "One item per attachment": {
+      "main": [
+        [
+          {
+            "node": "Send to Backhouse",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1",
+    "saveManualExecutions": true
+  },
+  "pinData": {},
+  "tags": [],
+  "versionId": "f146c18e-56a9-58a4-826e-bb5b77757075"
+}
