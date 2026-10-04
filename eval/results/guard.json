@@ -1,0 +1,2034 @@
+{
+  "summary": {
+    "poisoned": 153,
+    "detected": 153,
+    "detection_rate": 1.0,
+    "clean": 67,
+    "false_positives": 0,
+    "false_positive_rate": 0.0,
+    "by_technique": {
+      "white_text": {
+        "detected": 51,
+        "total": 51
+      },
+      "tiny_font": {
+        "detected": 51,
+        "total": 51
+      },
+      "off_page": {
+        "detected": 51,
+        "total": 51
+      }
+    },
+    "detectors_firing_on_poisoned": {
+      "hidden_text": 153,
+      "keywords": 153
+    },
+    "ocr_diff": false,
+    "classifier": false,
+    "seconds": 30.2,
+    "missed": [],
+    "false_positive_docs": []
+  },
+  "results": [
+    {
+      "name": "samples/seed/seed_green_valley_GV-1041.pdf",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "samples/seed/seed_harbor_fresh_HF-2207.pdf",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "samples/seed/seed_bluebell_BD-5530.pdf",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "samples/seed/seed_stone_mill_SM-0905.pdf",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "samples/seed/seed_prime_cut_PC-3290.pdf",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "samples/seed/seed_copper_kettle_CK-7764.pdf",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "samples/clean_green_valley_GV-1058.pdf",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "samples/clean_harbor_fresh_HF-2219.pdf",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "samples/clean_bluebell_BD-5547.pdf",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "samples/clean_stone_mill_SM-0917.pdf",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "samples/clean_copper_kettle_CK-7781.pdf",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "samples/clean_prime_cut_PC-3305.pdf",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "samples/scanned_prime_cut_PC-3311.jpg",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "samples/scanned_stone_mill_SM-0923.pdf",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "samples/bad_totals_bluebell_BD-5552.pdf",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "samples/duplicate_green_valley_GV-1041.pdf",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "samples/price_jump_harbor_fresh_HF-2231.pdf",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "samples/poisoned_white_text_bluebell_BD-5561.pdf",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "samples/poisoned_tiny_font_copper_kettle_CK-7790.pdf",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "samples/poisoned_offpage_prime_cut_PC-3318.pdf",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_0",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_0",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_0",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_0",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_1",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_1",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_1",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_1",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_2",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_2",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_2",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_2",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_3",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_3",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_3",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_3",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_4",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_4",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_4",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_4",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_5",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_5",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_5",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_5",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_6",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_6",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_6",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_6",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_7",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_7",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_7",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_7",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_8",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_8",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_8",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_8",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_9",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_9",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_9",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_9",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_10",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_10",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_10",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_10",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_11",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_11",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_11",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_11",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_12",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_12",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_12",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_12",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_13",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_13",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_13",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_13",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_14",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_14",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_14",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_14",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_15",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_15",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_15",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_15",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_16",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_16",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_16",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_16",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_17",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_17",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_17",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_17",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_18",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_18",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_18",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_18",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_19",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_19",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_19",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_19",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_20",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_20",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_20",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_20",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_21",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_21",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_21",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_21",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_22",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_22",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_22",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_22",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_23",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_23",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_23",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_23",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_24",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_24",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_24",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_24",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_25",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_25",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_25",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_25",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_26",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_26",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_26",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_26",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_27",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_27",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_27",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_27",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_28",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_28",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_28",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_28",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_29",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_29",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_29",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_29",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_30",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_30",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_30",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_30",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_31",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_31",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_31",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_31",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_32",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_32",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_32",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_32",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_33",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_33",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_33",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_33",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_34",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_34",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_34",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_34",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_35",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_35",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_35",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_35",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_36",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_36",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_36",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_36",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_37",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_37",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_37",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_37",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_38",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_38",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_38",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_38",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_39",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_39",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_39",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_39",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_40",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_40",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_40",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_40",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_41",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_41",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_41",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_41",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_42",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_42",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_42",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_42",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_43",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_43",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_43",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_43",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_44",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_44",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_44",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_44",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_45",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_45",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_45",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_45",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_46",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_46",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_46",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_46",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_47",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_47",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_47",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_47",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_48",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_48",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_48",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_48",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/clean_49",
+      "poisoned": false,
+      "technique": null,
+      "flagged": false,
+      "detectors": []
+    },
+    {
+      "name": "random/white_text_49",
+      "poisoned": true,
+      "technique": "white_text",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/tiny_font_49",
+      "poisoned": true,
+      "technique": "tiny_font",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    },
+    {
+      "name": "random/off_page_49",
+      "poisoned": true,
+      "technique": "off_page",
+      "flagged": true,
+      "detectors": [
+        "hidden_text",
+        "keywords"
+      ]
+    }
+  ]
+}

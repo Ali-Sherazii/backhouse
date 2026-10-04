@@ -1,0 +1,896 @@
+{
+  "summary": {
+    "dataset": "generated",
+    "documents": 17,
+    "errors": 0,
+    "field_accuracy": {
+      "vendor_name": 1.0,
+      "vendor_tax_id": 1.0,
+      "invoice_number": 1.0,
+      "invoice_date": 0.882,
+      "due_date": 0.941,
+      "currency": 1.0,
+      "subtotal": 1.0,
+      "tax": 1.0,
+      "total": 1.0,
+      "line_items_count": 0.941,
+      "line_items_exact": 0.941
+    },
+    "overall_field_accuracy": 0.973,
+    "fully_correct_documents": 14,
+    "median_llm_ms": 108619,
+    "model": "qwen2.5:3b",
+    "date": "2026-10-03"
+  },
+  "rows": [
+    {
+      "name": "seed/seed_green_valley_GV-1041.pdf",
+      "kind": "seed",
+      "ms": 112584,
+      "scores": {
+        "vendor_name": true,
+        "vendor_tax_id": true,
+        "invoice_number": true,
+        "invoice_date": true,
+        "due_date": true,
+        "currency": true,
+        "subtotal": true,
+        "tax": true,
+        "total": true,
+        "line_items_count": true,
+        "line_items_exact": true
+      },
+      "pred": {
+        "vendor_name": "Green Valley Produce Ltd",
+        "vendor_tax_id": "47-2918365",
+        "invoice_number": "GV-1041",
+        "invoice_date": "2026-08-28",
+        "due_date": "2026-09-11",
+        "currency": "USD",
+        "line_items": [
+          {
+            "description": "Roma tomatoes 25 lb case",
+            "quantity": 4.0,
+            "unit_price": 28.5,
+            "amount": 114.0
+          },
+          {
+            "description": "Romaine hearts 24 ct",
+            "quantity": 3.0,
+            "unit_price": 32.0,
+            "amount": 96.0
+          },
+          {
+            "description": "Yellow onions 50 lb",
+            "quantity": 2.0,
+            "unit_price": 24.75,
+            "amount": 49.5
+          },
+          {
+            "description": "Fresh basil bunch",
+            "quantity": 12.0,
+            "unit_price": 2.4,
+            "amount": 28.8
+          },
+          {
+            "description": "Lemons 115 ct",
+            "quantity": 1.0,
+            "unit_price": 41.0,
+            "amount": 41.0
+          }
+        ],
+        "subtotal": 329.3,
+        "tax": 0.0,
+        "total": 329.3
+      }
+    },
+    {
+      "name": "seed/seed_harbor_fresh_HF-2207.pdf",
+      "kind": "seed",
+      "ms": 170349,
+      "scores": {
+        "vendor_name": true,
+        "vendor_tax_id": true,
+        "invoice_number": true,
+        "invoice_date": true,
+        "due_date": true,
+        "currency": true,
+        "subtotal": true,
+        "tax": true,
+        "total": true,
+        "line_items_count": true,
+        "line_items_exact": true
+      },
+      "pred": {
+        "vendor_name": "Harbor Fresh Seafood Co.",
+        "vendor_tax_id": "93-4417260",
+        "invoice_number": "HF-2207",
+        "invoice_date": "2026-09-02",
+        "due_date": "2026-09-09",
+        "currency": "USD",
+        "line_items": [
+          {
+            "description": "Atlantic salmon fillet (lb)",
+            "quantity": 20.0,
+            "unit_price": 11.8,
+            "amount": 236.0
+          },
+          {
+            "description": "Littleneck clams 100 ct",
+            "quantity": 2.0,
+            "unit_price": 48.0,
+            "amount": 96.0
+          },
+          {
+            "description": "Shrimp 16/20 5 lb box",
+            "quantity": 3.0,
+            "unit_price": 52.5,
+            "amount": 157.5
+          }
+        ],
+        "subtotal": 489.5,
+        "tax": 0.0,
+        "total": 489.5
+      }
+    },
+    {
+      "name": "seed/seed_bluebell_BD-5530.pdf",
+      "kind": "seed",
+      "ms": 143149,
+      "scores": {
+        "vendor_name": true,
+        "vendor_tax_id": true,
+        "invoice_number": true,
+        "invoice_date": true,
+        "due_date": true,
+        "currency": true,
+        "subtotal": true,
+        "tax": true,
+        "total": true,
+        "line_items_count": true,
+        "line_items_exact": true
+      },
+      "pred": {
+        "vendor_name": "Bluebell Dairy Co.",
+        "vendor_tax_id": "36-8820147",
+        "invoice_number": "BD-5530",
+        "invoice_date": "2026-09-05",
+        "due_date": "2026-09-26",
+        "currency": "USD",
+        "line_items": [
+          {
+            "description": "Whole milk (gal)",
+            "quantity": 12.0,
+            "unit_price": 4.1,
+            "amount": 49.2
+          },
+          {
+            "description": "Heavy cream (qt)",
+            "quantity": 10.0,
+            "unit_price": 5.6,
+            "amount": 56.0
+          },
+          {
+            "description": "Unsalted butter (lb)",
+            "quantity": 15.0,
+            "unit_price": 4.95,
+            "amount": 74.25
+          },
+          {
+            "description": "Parmigiano Reggiano (lb)",
+            "quantity": 4.0,
+            "unit_price": 17.25,
+            "amount": 69.0
+          }
+        ],
+        "subtotal": 248.45,
+        "tax": 0.0,
+        "total": 248.45
+      }
+    },
+    {
+      "name": "seed/seed_stone_mill_SM-0905.pdf",
+      "kind": "seed",
+      "ms": 120364,
+      "scores": {
+        "vendor_name": true,
+        "vendor_tax_id": true,
+        "invoice_number": true,
+        "invoice_date": true,
+        "due_date": true,
+        "currency": true,
+        "subtotal": true,
+        "tax": true,
+        "total": true,
+        "line_items_count": true,
+        "line_items_exact": true
+      },
+      "pred": {
+        "vendor_name": "Stone Mill Bakery",
+        "vendor_tax_id": "82-1937754",
+        "invoice_number": "SM-0905",
+        "invoice_date": "2026-09-08",
+        "due_date": "2026-09-22",
+        "currency": "USD",
+        "line_items": [
+          {
+            "description": "Sourdough loaf",
+            "quantity": 30.0,
+            "unit_price": 4.5,
+            "amount": 135.0
+          },
+          {
+            "description": "Brioche buns (dozen)",
+            "quantity": 8.0,
+            "unit_price": 7.2,
+            "amount": 57.6
+          },
+          {
+            "description": "Baguette",
+            "quantity": 24.0,
+            "unit_price": 2.1,
+            "amount": 50.4
+          }
+        ],
+        "subtotal": 243.0,
+        "tax": 13.37,
+        "total": 256.37
+      }
+    },
+    {
+      "name": "seed/seed_prime_cut_PC-3290.pdf",
+      "kind": "seed",
+      "ms": 156213,
+      "scores": {
+        "vendor_name": true,
+        "vendor_tax_id": true,
+        "invoice_number": true,
+        "invoice_date": true,
+        "due_date": true,
+        "currency": true,
+        "subtotal": true,
+        "tax": true,
+        "total": true,
+        "line_items_count": true,
+        "line_items_exact": true
+      },
+      "pred": {
+        "vendor_name": "Prime Cut Meats Inc.",
+        "vendor_tax_id": "58-3302916",
+        "invoice_number": "PC-3290",
+        "invoice_date": "2026-09-12",
+        "due_date": "2026-09-26",
+        "currency": "USD",
+        "line_items": [
+          {
+            "description": "Beef short rib (lb)",
+            "quantity": 18.0,
+            "unit_price": 9.8,
+            "amount": 176.4
+          },
+          {
+            "description": "Chicken thighs boneless (lb)",
+            "quantity": 40.0,
+            "unit_price": 3.45,
+            "amount": 138.0
+          },
+          {
+            "description": "Pork belly skin-on (lb)",
+            "quantity": 12.0,
+            "unit_price": 5.9,
+            "amount": 70.8
+          }
+        ],
+        "subtotal": 385.2,
+        "tax": 0.0,
+        "total": 385.2
+      }
+    },
+    {
+      "name": "seed/seed_copper_kettle_CK-7764.pdf",
+      "kind": "seed",
+      "ms": 164445,
+      "scores": {
+        "vendor_name": true,
+        "vendor_tax_id": true,
+        "invoice_number": true,
+        "invoice_date": true,
+        "due_date": true,
+        "currency": true,
+        "subtotal": true,
+        "tax": true,
+        "total": true,
+        "line_items_count": true,
+        "line_items_exact": true
+      },
+      "pred": {
+        "vendor_name": "Copper Kettle Beverages",
+        "vendor_tax_id": "27-6650381",
+        "invoice_number": "CK-7764",
+        "invoice_date": "2026-09-15",
+        "due_date": "2026-10-15",
+        "currency": "USD",
+        "line_items": [
+          {
+            "description": "Espresso beans 5 lb bag",
+            "quantity": 3.0,
+            "unit_price": 58.0,
+            "amount": 174.0
+          },
+          {
+            "description": "Oat milk barista 12 x 32 oz",
+            "quantity": 4.0,
+            "unit_price": 39.6,
+            "amount": 158.4
+          },
+          {
+            "description": "Sparkling water 24 x 500 ml",
+            "quantity": 6.0,
+            "unit_price": 18.9,
+            "amount": 113.4
+          }
+        ],
+        "subtotal": 445.8,
+        "tax": 31.21,
+        "total": 477.01
+      }
+    },
+    {
+      "name": "clean_green_valley_GV-1058.pdf",
+      "kind": "clean",
+      "ms": 112042,
+      "scores": {
+        "vendor_name": true,
+        "vendor_tax_id": true,
+        "invoice_number": true,
+        "invoice_date": true,
+        "due_date": true,
+        "currency": true,
+        "subtotal": true,
+        "tax": true,
+        "total": true,
+        "line_items_count": true,
+        "line_items_exact": true
+      },
+      "pred": {
+        "vendor_name": "Green Valley Produce Ltd",
+        "vendor_tax_id": "47-2918365",
+        "invoice_number": "GV-1058",
+        "invoice_date": "2026-09-25",
+        "due_date": "2026-10-09",
+        "currency": "USD",
+        "line_items": [
+          {
+            "description": "Roma tomatoes 25 lb case",
+            "quantity": 5.0,
+            "unit_price": 29.1,
+            "amount": 145.5
+          },
+          {
+            "description": "Romaine hearts 24 ct",
+            "quantity": 2.0,
+            "unit_price": 32.0,
+            "amount": 64.0
+          },
+          {
+            "description": "Russet potatoes 50 lb",
+            "quantity": 2.0,
+            "unit_price": 22.9,
+            "amount": 45.8
+          },
+          {
+            "description": "Fresh basil bunch",
+            "quantity": 10.0,
+            "unit_price": 2.4,
+            "amount": 24.0
+          },
+          {
+            "description": "Lemons 115 ct",
+            "quantity": 1.0,
+            "unit_price": 42.5,
+            "amount": 42.5
+          }
+        ],
+        "subtotal": 321.8,
+        "tax": 0.0,
+        "total": 321.8
+      }
+    },
+    {
+      "name": "clean_harbor_fresh_HF-2219.pdf",
+      "kind": "clean",
+      "ms": 95157,
+      "scores": {
+        "vendor_name": true,
+        "vendor_tax_id": true,
+        "invoice_number": true,
+        "invoice_date": true,
+        "due_date": true,
+        "currency": true,
+        "subtotal": true,
+        "tax": true,
+        "total": true,
+        "line_items_count": true,
+        "line_items_exact": true
+      },
+      "pred": {
+        "vendor_name": "Harbor Fresh Seafood Co.",
+        "vendor_tax_id": "93-4417260",
+        "invoice_number": "HF-2219",
+        "invoice_date": "2026-09-22",
+        "due_date": "2026-09-29",
+        "currency": "USD",
+        "line_items": [
+          {
+            "description": "Atlantic salmon fillet (lb)",
+            "quantity": 15.0,
+            "unit_price": 12.1,
+            "amount": 181.5
+          },
+          {
+            "description": "Sea scallops U10 (lb)",
+            "quantity": 6.0,
+            "unit_price": 24.4,
+            "amount": 146.4
+          },
+          {
+            "description": "Littleneck clams 100 ct",
+            "quantity": 1.0,
+            "unit_price": 48.0,
+            "amount": 48.0
+          }
+        ],
+        "subtotal": 375.9,
+        "tax": 0.0,
+        "total": 375.9
+      }
+    },
+    {
+      "name": "clean_bluebell_BD-5547.pdf",
+      "kind": "clean",
+      "ms": 126406,
+      "scores": {
+        "vendor_name": true,
+        "vendor_tax_id": true,
+        "invoice_number": true,
+        "invoice_date": true,
+        "due_date": true,
+        "currency": true,
+        "subtotal": true,
+        "tax": true,
+        "total": true,
+        "line_items_count": true,
+        "line_items_exact": true
+      },
+      "pred": {
+        "vendor_name": "Bluebell Dairy Co.",
+        "vendor_tax_id": "36-8820147",
+        "invoice_number": "BD-5547",
+        "invoice_date": "2026-09-24",
+        "due_date": "2026-10-15",
+        "currency": "USD",
+        "line_items": [
+          {
+            "description": "Whole milk (gal)",
+            "quantity": 14.0,
+            "unit_price": 4.15,
+            "amount": 58.1
+          },
+          {
+            "description": "Greek yogurt 5 lb tub",
+            "quantity": 3.0,
+            "unit_price": 13.8,
+            "amount": 41.4
+          },
+          {
+            "description": "Unsalted butter (lb)",
+            "quantity": 10.0,
+            "unit_price": 4.95,
+            "amount": 49.5
+          },
+          {
+            "description": "Heavy cream (qt)",
+            "quantity": 8.0,
+            "unit_price": 5.75,
+            "amount": 46.0
+          }
+        ],
+        "subtotal": 195.0,
+        "tax": 0.0,
+        "total": 195.0
+      }
+    },
+    {
+      "name": "clean_stone_mill_SM-0917.pdf",
+      "kind": "clean",
+      "ms": 94330,
+      "scores": {
+        "vendor_name": true,
+        "vendor_tax_id": true,
+        "invoice_number": true,
+        "invoice_date": true,
+        "due_date": true,
+        "currency": true,
+        "subtotal": true,
+        "tax": true,
+        "total": true,
+        "line_items_count": true,
+        "line_items_exact": true
+      },
+      "pred": {
+        "vendor_name": "Stone Mill Bakery",
+        "vendor_tax_id": "82-1937754",
+        "invoice_number": "SM-0917",
+        "invoice_date": "2026-09-26",
+        "due_date": "2026-10-10",
+        "currency": "USD",
+        "line_items": [
+          {
+            "description": "Sourdough loaf",
+            "quantity": 28.0,
+            "unit_price": 4.5,
+            "amount": 126.0
+          },
+          {
+            "description": "Focaccia sheet",
+            "quantity": 4.0,
+            "unit_price": 16.0,
+            "amount": 64.0
+          },
+          {
+            "description": "Baguette",
+            "quantity": 30.0,
+            "unit_price": 2.1,
+            "amount": 63.0
+          }
+        ],
+        "subtotal": 253.0,
+        "tax": 13.92,
+        "total": 266.92
+      }
+    },
+    {
+      "name": "clean_copper_kettle_CK-7781.pdf",
+      "kind": "clean",
+      "ms": 101712,
+      "scores": {
+        "vendor_name": true,
+        "vendor_tax_id": true,
+        "invoice_number": true,
+        "invoice_date": false,
+        "due_date": true,
+        "currency": true,
+        "subtotal": true,
+        "tax": true,
+        "total": true,
+        "line_items_count": true,
+        "line_items_exact": true
+      },
+      "pred": {
+        "vendor_name": "Copper Kettle Beverages",
+        "vendor_tax_id": "27-6650381",
+        "invoice_number": "CK-7781",
+        "invoice_date": "2026-10-27",
+        "due_date": "2026-10-27",
+        "currency": "USD",
+        "line_items": [
+          {
+            "description": "Espresso beans 5 lb bag",
+            "quantity": 2.0,
+            "unit_price": 58.0,
+            "amount": 116.0
+          },
+          {
+            "description": "Cold brew concentrate 1 gal",
+            "quantity": 4.0,
+            "unit_price": 27.5,
+            "amount": 110.0
+          },
+          {
+            "description": "Oat milk barista 12 x 32 oz",
+            "quantity": 3.0,
+            "unit_price": 39.6,
+            "amount": 118.8
+          }
+        ],
+        "subtotal": 344.8,
+        "tax": 24.14,
+        "total": 368.94
+      }
+    },
+    {
+      "name": "clean_prime_cut_PC-3305.pdf",
+      "kind": "clean",
+      "ms": 94158,
+      "scores": {
+        "vendor_name": true,
+        "vendor_tax_id": true,
+        "invoice_number": true,
+        "invoice_date": true,
+        "due_date": true,
+        "currency": true,
+        "subtotal": true,
+        "tax": true,
+        "total": true,
+        "line_items_count": true,
+        "line_items_exact": true
+      },
+      "pred": {
+        "vendor_name": "Prime Cut Meats Inc.",
+        "vendor_tax_id": "58-3302916",
+        "invoice_number": "PC-3305",
+        "invoice_date": "2026-09-28",
+        "due_date": "2026-10-12",
+        "currency": "USD",
+        "line_items": [
+          {
+            "description": "Beef short rib (lb)",
+            "quantity": 20.0,
+            "unit_price": 10.1,
+            "amount": 202.0
+          },
+          {
+            "description": "Ground chuck 80/20 (lb)",
+            "quantity": 25.0,
+            "unit_price": 5.25,
+            "amount": 131.25
+          },
+          {
+            "description": "Chicken thighs boneless (lb)",
+            "quantity": 30.0,
+            "unit_price": 3.45,
+            "amount": 103.5
+          }
+        ],
+        "subtotal": 436.75,
+        "tax": 0.0,
+        "total": 436.75
+      }
+    },
+    {
+      "name": "scanned_prime_cut_PC-3311.jpg",
+      "kind": "scanned",
+      "ms": 99502,
+      "scores": {
+        "vendor_name": true,
+        "vendor_tax_id": true,
+        "invoice_number": true,
+        "invoice_date": true,
+        "due_date": true,
+        "currency": true,
+        "subtotal": true,
+        "tax": true,
+        "total": true,
+        "line_items_count": false,
+        "line_items_exact": false
+      },
+      "pred": {
+        "vendor_name": "Prime Cut Meats Inc.",
+        "vendor_tax_id": "58-3302916",
+        "invoice_number": "PC-3311",
+        "invoice_date": "2026-09-30",
+        "due_date": "2026-10-14",
+        "currency": "USD",
+        "line_items": [
+          {
+            "description": "Pork belly skin-on (lb)",
+            "quantity": 10.0,
+            "unit_price": 5.9,
+            "amount": 59.0
+          },
+          {
+            "description": "Pork belly skin-on (lb)",
+            "quantity": 35.0,
+            "unit_price": 3.45,
+            "amount": 120.75
+          },
+          {
+            "description": "Chicken thighs boneless (lb)",
+            "quantity": null,
+            "unit_price": null,
+            "amount": 179.75
+          }
+        ],
+        "subtotal": 179.75,
+        "tax": 0.0,
+        "total": 179.75
+      }
+    },
+    {
+      "name": "scanned_stone_mill_SM-0923.pdf",
+      "kind": "scanned",
+      "ms": 105979,
+      "scores": {
+        "vendor_name": true,
+        "vendor_tax_id": true,
+        "invoice_number": true,
+        "invoice_date": true,
+        "due_date": true,
+        "currency": true,
+        "subtotal": true,
+        "tax": true,
+        "total": true,
+        "line_items_count": true,
+        "line_items_exact": true
+      },
+      "pred": {
+        "vendor_name": "Stone Mill Bakery",
+        "vendor_tax_id": "82-1937754",
+        "invoice_number": "SM-0923",
+        "invoice_date": "2026-10-01",
+        "due_date": "2026-10-15",
+        "currency": "USD",
+        "line_items": [
+          {
+            "description": "Brioche buns (dozen)",
+            "quantity": 10.0,
+            "unit_price": 7.2,
+            "amount": 72.0
+          },
+          {
+            "description": "Sourdough loaf",
+            "quantity": 24.0,
+            "unit_price": 4.5,
+            "amount": 108.0
+          }
+        ],
+        "subtotal": 180.0,
+        "tax": 9.9,
+        "total": 189.9
+      }
+    },
+    {
+      "name": "bad_totals_bluebell_BD-5552.pdf",
+      "kind": "bad_totals",
+      "ms": 92698,
+      "scores": {
+        "vendor_name": true,
+        "vendor_tax_id": true,
+        "invoice_number": true,
+        "invoice_date": false,
+        "due_date": false,
+        "currency": true,
+        "subtotal": true,
+        "tax": true,
+        "total": true,
+        "line_items_count": true,
+        "line_items_exact": true
+      },
+      "pred": {
+        "vendor_name": "Bluebell Dairy Co.",
+        "vendor_tax_id": "36-8820147",
+        "invoice_number": "BD-5552",
+        "invoice_date": "2026-10-29",
+        "due_date": "2026-11-10",
+        "currency": "USD",
+        "line_items": [
+          {
+            "description": "Whole milk (gal)",
+            "quantity": 10.0,
+            "unit_price": 4.1,
+            "amount": 41.0
+          },
+          {
+            "description": "Parmigiano Reggiano (lb)",
+            "quantity": 3.0,
+            "unit_price": 17.25,
+            "amount": 51.75
+          },
+          {
+            "description": "Heavy cream (qt)",
+            "quantity": 6.0,
+            "unit_price": 5.6,
+            "amount": 33.6
+          }
+        ],
+        "subtotal": 146.35,
+        "tax": 0.0,
+        "total": 146.35
+      }
+    },
+    {
+      "name": "duplicate_green_valley_GV-1041.pdf",
+      "kind": "duplicate",
+      "ms": 108619,
+      "scores": {
+        "vendor_name": true,
+        "vendor_tax_id": true,
+        "invoice_number": true,
+        "invoice_date": true,
+        "due_date": true,
+        "currency": true,
+        "subtotal": true,
+        "tax": true,
+        "total": true,
+        "line_items_count": true,
+        "line_items_exact": true
+      },
+      "pred": {
+        "vendor_name": "Green Valley Produce Ltd",
+        "vendor_tax_id": "47-2918365",
+        "invoice_number": "GV-1041",
+        "invoice_date": "2026-08-28",
+        "due_date": "2026-09-11",
+        "currency": "USD",
+        "line_items": [
+          {
+            "description": "Roma tomatoes 25 lb case",
+            "quantity": 4.0,
+            "unit_price": 28.5,
+            "amount": 114.0
+          },
+          {
+            "description": "Romaine hearts 24 ct",
+            "quantity": 3.0,
+            "unit_price": 32.0,
+            "amount": 96.0
+          },
+          {
+            "description": "Yellow onions 50 lb",
+            "quantity": 2.0,
+            "unit_price": 24.75,
+            "amount": 49.5
+          },
+          {
+            "description": "Fresh basil bunch",
+            "quantity": 12.0,
+            "unit_price": 2.4,
+            "amount": 28.8
+          },
+          {
+            "description": "Lemons 115 ct",
+            "quantity": 1.0,
+            "unit_price": 41.0,
+            "amount": 41.0
+          }
+        ],
+        "subtotal": 329.3,
+        "tax": 0.0,
+        "total": 329.3
+      }
+    },
+    {
+      "name": "price_jump_harbor_fresh_HF-2231.pdf",
+      "kind": "price_jump",
+      "ms": 82816,
+      "scores": {
+        "vendor_name": true,
+        "vendor_tax_id": true,
+        "invoice_number": true,
+        "invoice_date": true,
+        "due_date": true,
+        "currency": true,
+        "subtotal": true,
+        "tax": true,
+        "total": true,
+        "line_items_count": true,
+        "line_items_exact": true
+      },
+      "pred": {
+        "vendor_name": "Harbor Fresh Seafood Co.",
+        "vendor_tax_id": "93-4417260",
+        "invoice_number": "HF-2231",
+        "invoice_date": "2026-10-02",
+        "due_date": "2026-10-09",
+        "currency": "USD",
+        "line_items": [
+          {
+            "description": "Atlantic salmon fillet (lb)",
+            "quantity": 20.0,
+            "unit_price": 15.2,
+            "amount": 304.0
+          },
+          {
+            "description": "Shrimp 16/20 5 lb box",
+            "quantity": 2.0,
+            "unit_price": 52.5,
+            "amount": 105.0
+          }
+        ],
+        "subtotal": 409.0,
+        "tax": 0.0,
+        "total": 409.0
+      }
+    }
+  ]
+}
