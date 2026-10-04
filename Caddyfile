@@ -1,0 +1,24 @@
+# Public app: the Next.js frontend, with /api going straight to FastAPI.
+{$APP_DOMAIN} {
+	encode zstd gzip
+	handle_path /api/* {
+		reverse_proxy api:8000
+	}
+	handle {
+		reverse_proxy frontend:3000
+	}
+}
+
+# Internal tools. Each has its own login (n8n owner account, Odoo admin,
+# Langfuse admin with sign-up disabled).
+{$N8N_DOMAIN} {
+	reverse_proxy n8n:5678
+}
+
+{$ODOO_DOMAIN} {
+	reverse_proxy odoo:8069
+}
+
+{$TRACES_DOMAIN} {
+	reverse_proxy langfuse-web:3000
+}
